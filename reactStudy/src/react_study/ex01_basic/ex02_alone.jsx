@@ -19,6 +19,8 @@ export default function ToDoLists() {
     ]);
   };
 
+  const toggleTodo = () => {};
+
   const deleteTodo = (id) => {
     setTodos((prev) => prev.filter((todo) => todo.id !== id));
   };
