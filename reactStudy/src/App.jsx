@@ -4,6 +4,8 @@ import MyComponent2, {
   Child2,
   MyComponent,
 } from "./react_study/ex01_basic/ex01_component";
+import ToDoLists from "./react_study/ex01_basic/ex02_alone";
+import ToDoList from "./react_study/ex01_basic/todoList";
 import UseStateEx from "./react_study/ex02_useState/ex01_basic";
 import TitleList from "./react_study/ex02_useState/ex03_map";
 import UseStateArr from "./react_study/ex02_useState/ex04_arr";
@@ -47,7 +49,9 @@ function App() {
       {/* <Filter /> */}
       {/* <Timer /> */}
       {/* <Filters /> */}
-      <AddRemove />
+      {/* <AddRemove /> */}
+      {/* <ToDoList /> */}
+      <ToDoLists />
     </>
   );
 }
