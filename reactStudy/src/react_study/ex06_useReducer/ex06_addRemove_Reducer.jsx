@@ -78,7 +78,7 @@ const usersInfo = [
 ];
 
 function LoginForm() {
-  // { setIsLoginFormOpen, setUser }
+// { setIsLoginFormOpen, setUser }
   const { setIsLoginFormOpen, setUser } = useContext(LoginContext);
   const [form, setForm] = useState({ id: "", pw: "" });
   const [error, setError] = useState("");
@@ -156,7 +156,7 @@ function LoginForm() {
 }
 
 function Header() {
-  // { user, setIsLoginFormOpen, setUser }
+// { user, setIsLoginFormOpen, setUser }
   const { user, setIsLoginFormOpen, setUser } = useContext(LoginContext);
   return (
     <header
@@ -206,27 +206,23 @@ function Header() {
     </header>
   );
 }
-
 function cardReducer(state, action) {
   switch (action.type) {
-    case "ADDCARD":
+    case "AddCard":
       return [...state, action.payload];
-    case "DELCARD":
-      return state.filter((_, i) => {
-        return i !== action.payload;
-      });
+    case "DelCard":
+      return state.filter((_, i) => i !== action.payload);
   }
 }
-
 function AddRemove() {
+  // const [card, setCard] = useState(() => {
+  //   const saved = localStorage.getItem("cards")
+  //   return saved ? JSON.parse(saved) : [];
+  // })
   const [card, dispatch] = useReducer(cardReducer, [], () => {
     const saved = localStorage.getItem("cards");
     return saved ? JSON.parse(saved) : [];
   });
-  // const [card, setCard] = useState(() => {
-  //   const saved = localStorage.getItem("cards");
-  //   return saved ? JSON.parse(saved) : [];
-  // });
   const [form, setForm] = useState({ name: "", desc: "" });
   const nameInputRef = useRef(null);
 
@@ -236,10 +232,10 @@ function AddRemove() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // setCard((prev) => {
+    // setCard(prev => {
     //   const newCard = [...prev, form];
-    //   return newCard;
-    // });
+    //   return newCard
+    // })
     dispatch({ type: "AddCard", payload: form });
     setForm({ name: "", desc: "" });
   };
@@ -258,7 +254,8 @@ function AddRemove() {
 
           <button
             onClick={() => {
-              setCard((prev) => prev.filter((_, i) => i !== idx));
+              // setCard(prev => prev.filter((_, i) => i !== idx))
+              dispatch({ type: "DelCard", payload: idx });
               console.log(`${item.name} 삭제되었습니다.`);
             }}
             style={deleteButtonStyle}
@@ -297,7 +294,7 @@ function AddRemove() {
   );
 }
 
-export default function MyApp() {
+export default function MyAppReducer() {
   const [user, setUser] = useState(null);
   const [isLoginFormOpen, setIsLoginFormOpen] = useState(false);
   const value = { user, setUser, setIsLoginFormOpen };
