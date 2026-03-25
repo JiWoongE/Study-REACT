@@ -15,6 +15,9 @@ import AddRemove from "./react_study/ex04_useRef/ex01_useRef";
 import Timer from "./react_study/ex03_useEffect/ex02_Timer";
 import LangComp from "./react_study/ex05_useContext/ex03_language";
 import MyApp from "./react_study/ex05_useContext/ex05_useContext";
+import ReducerEx from "./react_study/ex06_useReducer/ex02_useReducer";
+import BookList from "./react_study/ex06_useReducer/ex04_destructuring";
+import ReducerCounter from "./react_study/ex06_useReducer/ex05_counter";
 
 function App() {
   // const [title, setTitle] = useState("기본 제목")
@@ -55,7 +58,10 @@ function App() {
       {/* <ToDoLists /> */}
       {/* <AddRemove /> */}
       {/* <LangComp /> */}
-      <MyApp />
+      {/* <MyApp /> */}
+      {/* <ReducerEx /> */}
+      {/* <BookList /> */}
+      <ReducerCounter />
     </>
   );
 }
