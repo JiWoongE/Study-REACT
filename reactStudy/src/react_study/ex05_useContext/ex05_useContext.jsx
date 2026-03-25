@@ -71,7 +71,7 @@ const usersInfo = [
 ];
 
 function LoginForm() {
-  // { setIsLoginFormOpen, setUser }
+// { setIsLoginFormOpen, setUser }
   const { setIsLoginFormOpen, setUser } = useContext(LoginContext);
   const [form, setForm] = useState({ id: "", pw: "" });
   const [error, setError] = useState("");
@@ -149,7 +149,7 @@ function LoginForm() {
 }
 
 function Header() {
-  // { user, setIsLoginFormOpen, setUser }
+// { user, setIsLoginFormOpen, setUser }
   const { user, setIsLoginFormOpen, setUser } = useContext(LoginContext);
   return (
     <header
