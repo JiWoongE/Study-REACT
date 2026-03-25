@@ -1,19 +1,24 @@
-// const colors = ["red", "green", "blue"];
+// const colors = ['red', 'green', 'blue'];
 // const [first, second, third] = colors;
 // console.log(first, second, third);
 
-// const user = { name: "Alice", age: 25 };
-// const { name, age } = user;
-// const { name: userName, age: userAge } = user;
-// console.log(name, age);
+// const user = {name:'Alice', age:25}
+// const {name, age} = user;
+// const {name:userName, age:userAge} = user;
+// console.log(name, age)
 // console.log(userName, userAge);
 
-// const abc = [10, 20, 30];
-// const [_, a, b] = abc;
-// console.log("a=", a, "b", b);
+// const nums = [10, 20, 30];
+// const [_, a, b] = nums;
+// console.log(a,b)
 
-// const obj = { id: 1, title: "hello" };
-// const { title } = obj;
+// const obj = {id:1, title:"hello"}
+// const {title} = obj
+// console.log(title)
+
+// const fullName = {firstName:"John", lastName:"Snow"}
+// const {firstName:fName} = fullName;
+// console.log(fName)
 
 const post = {
   id: 1,
@@ -24,12 +29,13 @@ const post = {
   },
   comments: [
     { id: 10, text: "좋은 글이네요!" },
-    { id: 20, text: "잘 읽었습니다." },
+    { id: 11, text: "잘 읽었습니다." },
   ],
 };
+
 const {
   title,
-  comments: [comment],
+  comments: [{ text }, { id }],
   author: { name },
 } = post;
-console.log(title, comment, name);
+console.log(text, id);
