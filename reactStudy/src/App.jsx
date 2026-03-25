@@ -4,7 +4,6 @@ import MyComponent2, {
   Child2,
   MyComponent,
 } from "./react_study/ex01_basic/ex01_component";
-import ToDoLists from "./react_study/ex01_basic/ex02_alone";
 import ToDoList from "./react_study/ex01_basic/todoList";
 import UseStateEx from "./react_study/ex02_useState/ex01_basic";
 import TitleList from "./react_study/ex02_useState/ex03_map";
@@ -12,8 +11,10 @@ import UseStateArr from "./react_study/ex02_useState/ex04_arr";
 import FlexEx from "./react_study/ex02_useState/ex05_flex";
 import ObjectEx from "./react_study/ex02_useState/ex06_object";
 import Filter from "./react_study/ex02_useState/ex07_filter";
-import AddRemove from "./react_study/ex02_useState/ex08_prev";
+import AddRemove from "./react_study/ex04_useRef/ex01_useRef";
 import Timer from "./react_study/ex03_useEffect/ex02_Timer";
+import LangComp from "./react_study/ex05_useContext/ex03_language";
+import MyApp from "./react_study/ex05_useContext/ex05_useContext";
 
 function App() {
   // const [title, setTitle] = useState("기본 제목")
@@ -51,7 +52,10 @@ function App() {
       {/* <Filters /> */}
       {/* <AddRemove /> */}
       {/* <ToDoList /> */}
-      <ToDoLists />
+      {/* <ToDoLists /> */}
+      {/* <AddRemove /> */}
+      {/* <LangComp /> */}
+      <MyApp />
     </>
   );
 }

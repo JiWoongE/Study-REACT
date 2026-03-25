@@ -1,65 +1,45 @@
-import { useState } from "react";
+import React, { createContext, useContext, useState } from "react";
 
-export default function ToDoLists() {
-  const [text, setText] = useState("");
-  const [todos, setTodos] = useState([]);
-  const [isZoomed, setIsZoomed] = useState(false);
+const LanguageContext = createContext();
 
-  const doingTodos = todos.filter((todo) => !todo.done);
-  const doneTodos = todos.filter((todo) => todo.done);
-
-  const addTodo = () => {
-    setTodos((prev) => [
-      ...prev,
-      {
-        id: Date.now(),
-        text,
-        done: false,
-      },
-    ]);
-  };
-
-  const toggleTodo = () => {};
-
-  const deleteTodo = (id) => {
-    setTodos((prev) => prev.filter((todo) => todo.id !== id));
-  };
+export default function LangComp() {
+  const [lang, setLang] = useState("ko");
 
   return (
-    <>
-      <h1>To Do List</h1>
-      <div>
-        <input
-          value={text}
-          onChange={(e) => {
-            setText(e.target.value);
-          }}
-        />
-        <button onClick={addTodo}>추가</button>
-        {todos.map((todo) => (
-          <div key={todo.id}>{todo.text}</div>
-        ))}
-      </div>
+    // TODO: Provider 내부에 <Header />, <Main />, <Button />를 렌더링하세요.
+    // TODO: Provider로 lang, setLang을 공유하세요
+    <LanguageContext.provider value={{ lang, setLang }}>
+      <Header />
+      <Main />
+      <Button />
+    </LanguageContext.provider>
+  );
+}
 
-      <div>
-        <div>
-          <h2>진행중</h2>
-          {doingTodos.map((todo) => {
-            <div key={todo.id}>
-              {todo.text}
-              <button>완료처리</button>
-              <button onClick={() => deleteTodo(todo.id)}>삭제</button>
-            </div>;
-          })}
-        </div>
-      </div>
+function Header() {
+  // TODO: lang이 'ko'면 "내 웹사이트", 아니면 "My Website"를 렌더링하세요.
+  const { lang } = useContext(LanguageContext);
+  return <h1>{lang === "ko" ? "내 웹사이트" : "My Website"}</h1>;
+}
 
-      <div>
-        <div>
-          <h2>완료</h2>
-          <button onClick={() => deleteTodo(todo.id)}>삭제</button>
-        </div>
-      </div>
-    </>
+function Main() {
+  // TODO:  lang이 'ko'면 "안녕하세요", 아니면 "Hello"를 렌더링하세요.
+  const { lang } = useContext(LanguageContext);
+  return <p>{lang === "ko" ? "안녕하세요" : "Hello"}</p>;
+}
+
+function Button() {
+  // TODO: - lang이 'ko'면 버튼 라벨 "언어 변경", 아니면 "Change language"
+  //       - toggleLanguage를 구현하세요. (힌트: setLang을 가져와서 쓰세요)
+  const { lang, setLang } = useContext(LanguageContext);
+  const toggleLanguage = () => {
+    setLang((prev) => {
+      return prev === "ko" ? "en" : "ko";
+    });
+  };
+  return (
+    <button onClick={toggleLanguage}>
+      {lang === "ko" ? "언어 변경" : "Change language"}
+    </button>
   );
 }
