@@ -2,5 +2,8 @@
   "devDependencies": {
     "@rolldown/plugin-babel": "^0.2.2",
     "babel-plugin-react-compiler": "1.0.0"
+  },
+  "dependencies": {
+    "lodash.debounce": "^4.0.8"
   }
 }
