@@ -1,45 +1,25 @@
-import React, { createContext, useContext, useState } from "react";
+import { useReducer } from "react";
 
-const LanguageContext = createContext();
+function counterReducer(state, action) {
+  switch (action.type) {
+    case "INCREMENT":
+      return state + 1;
+    case "DECREMENT":
+      return state - 1;
+    case "RESET":
+      return 0;
+    default:
+      console.error("error");
+  }
+}
 
-export default function LangComp() {
-  const [lang, setLang] = useState("ko");
+export default function ReducerCounter() {
+  const [count, dispatch] = useReducer(counterReducer, 0);
 
   return (
-    // TODO: Provider 내부에 <Header />, <Main />, <Button />를 렌더링하세요.
-    // TODO: Provider로 lang, setLang을 공유하세요
-    <LanguageContext.provider value={{ lang, setLang }}>
-      <Header />
-      <Main />
-      <Button />
-    </LanguageContext.provider>
-  );
-}
-
-function Header() {
-  // TODO: lang이 'ko'면 "내 웹사이트", 아니면 "My Website"를 렌더링하세요.
-  const { lang } = useContext(LanguageContext);
-  return <h1>{lang === "ko" ? "내 웹사이트" : "My Website"}</h1>;
-}
-
-function Main() {
-  // TODO:  lang이 'ko'면 "안녕하세요", 아니면 "Hello"를 렌더링하세요.
-  const { lang } = useContext(LanguageContext);
-  return <p>{lang === "ko" ? "안녕하세요" : "Hello"}</p>;
-}
-
-function Button() {
-  // TODO: - lang이 'ko'면 버튼 라벨 "언어 변경", 아니면 "Change language"
-  //       - toggleLanguage를 구현하세요. (힌트: setLang을 가져와서 쓰세요)
-  const { lang, setLang } = useContext(LanguageContext);
-  const toggleLanguage = () => {
-    setLang((prev) => {
-      return prev === "ko" ? "en" : "ko";
-    });
-  };
-  return (
-    <button onClick={toggleLanguage}>
-      {lang === "ko" ? "언어 변경" : "Change language"}
-    </button>
+    <>
+      <button onClick={() => dispatch({ type: "INCREMENT" })}></button>
+      <button onClick={() => dispatch({ type: "DECREMENT" })}></button>
+    </>
   );
 }
